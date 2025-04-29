@@ -1,7 +1,7 @@
 # 2024 Hex React Week 03 主線任務 - 熟練 React.js
 
-本專案為 2024 六角 React 課程第四週主線任務。
-延續第三週作業，拆分元件、整合邏輯。
+本專案為 2024 六角 React 課程第四週主線任務。 <br />
+目標為延續第三週作業，拆分元件、整合邏輯。
 
 🔗 [前往 Demo](https://itsdaiyy.github.io/2024-hex-react-training-week04/)
 

@@ -255,6 +255,7 @@ function ProductModal({
                       type="number"
                       className="form-control"
                       placeholder="請輸入原價"
+                      min={0}
                       value={modalData.origin_price}
                       onChange={handleModalInputChange}
                     />
@@ -268,6 +269,7 @@ function ProductModal({
                       id="price"
                       type="number"
                       className="form-control"
+                      min={0}
                       placeholder="請輸入售價"
                       value={modalData.price}
                       onChange={handleModalInputChange}

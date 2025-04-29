@@ -4,6 +4,7 @@ import { checkLogin } from "./services/apiAuth";
 
 import AdminDashboard from "./pages/AdminDashboard";
 import Login from "./pages/Login";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   // 儲存使用者認證狀態
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="my-5">
       {isAuth ? <AdminDashboard /> : <Login setIsAuth={setIsAuth} />}
+      <Toaster />
     </div>
   );
 }

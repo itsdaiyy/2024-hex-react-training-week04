@@ -1,11 +1,12 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const { VITE_BASE_URL } = import.meta.env;
 
 export async function login(account) {
   // 確保環境變數存在，否則提示錯誤
   if (!VITE_BASE_URL) {
-    console.error("環境變數未正確配置：VITE_BASE_URL 缺失");
+    toast.error("環境變數未正確配置：VITE_BASE_URL 缺失");
     return null;
   }
 
@@ -19,9 +20,10 @@ export async function login(account) {
 
     axios.defaults.headers.common.Authorization = `${token}`;
 
+    toast.success("登入成功！");
     return { expired, token, message };
   } catch (error) {
-    console.error(error);
+    toast.error(`${error.message}`);
     return null;
   }
 }
@@ -29,7 +31,7 @@ export async function login(account) {
 export async function checkLogin() {
   // 確保環境變數存在，否則提示錯誤
   if (!VITE_BASE_URL) {
-    console.error("環境變數未正確配置：VITE_BASE_URL 缺失");
+    toast.error("環境變數未正確配置：VITE_BASE_URL 缺失");
     return null;
   }
 
@@ -49,7 +51,7 @@ export async function checkLogin() {
 
     return { success, uid };
   } catch (error) {
-    console.error("未登入", error);
+    toast.error("未登入", error);
     return null;
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { login } from "../services/apiAuth";
+import toast from "react-hot-toast";
 
 function Login({ setIsAuth }) {
   // 儲存使用者表單資料
@@ -23,7 +24,6 @@ function Login({ setIsAuth }) {
     const res = await login(formData);
 
     if (!res) {
-      alert("登入失敗");
       return;
     }
 

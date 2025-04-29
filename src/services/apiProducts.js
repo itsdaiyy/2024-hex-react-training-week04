@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 // 從環境變數中解構出 API 基本路徑
 const { VITE_BASE_URL, VITE_API_PATH } = import.meta.env;
@@ -13,7 +14,7 @@ export async function getProducts(page = 1) {
 
     return data;
   } catch (error) {
-    console.error(`取得產品發生錯誤：`, error);
+    toast.error(`取得產品發生錯誤`);
     return null;
   }
 }
@@ -32,8 +33,9 @@ export async function addProduct(product) {
     await axios.post(url, {
       data: newProduct,
     });
+    toast.success(`新增產品成功`);
   } catch (error) {
-    console.error(`新增產品發生錯誤：`, error);
+    toast.error(`新增產品發生錯誤`);
     return null;
   }
 }
@@ -44,9 +46,10 @@ export async function deleteProduct(productId) {
   try {
     const res = await axios.delete(url);
     const data = res.data;
+    toast.success(`刪除產品成功`);
     return data;
   } catch (error) {
-    console.error(error);
+    toast.error(`刪除產品發生錯誤`);
     return null;
   }
 }
@@ -66,9 +69,10 @@ export async function updateProduct(product) {
       data: newProduct,
     });
     const data = res.data;
+    toast.success(`更新產品成功`);
     return data;
   } catch (error) {
-    console.error(error);
+    toast.error(`更新產品失敗`);
     return null;
   }
 }
@@ -83,9 +87,11 @@ export async function uploadImage(imageFile) {
   try {
     const res = await axios.post(url, formData);
     const uploadedImageUrl = res.data.imageUrl;
+
+    toast.success(`圖片上傳成功！`);
     return uploadedImageUrl;
   } catch (error) {
-    console.error(error);
+    toast.error(`圖片上傳失敗！`);
     return null;
   }
 }
